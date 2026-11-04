@@ -106,7 +106,7 @@ Les 4 premiers sont obligatoires ; le 5ᵉ (`PA_HOST`) est **obligatoire pour le
 | `PA_TOKEN`          | votre jeton d'API (PythonAnywhere : Account → API Token) |
 | `PA_TARGET_DIR`     | onglet Web → *Source code* (ex. : `/home/monuser/mysite`) |
 | `PA_WEBAPP_DOMAIN`  | votre site, **sans** `https://` (ex. : `monuser.pythonanywhere.com` ou `monuser.eu.pythonanywhere.com`) |
-| `PA_HOST`           | **comptes européens uniquement** : `eu.pythonanywhere.com` (inutile pour un compte US) |
+| `exit`           | **comptes européens uniquement** : `eu.pythonanywhere.com` (inutile pour un compte US) |
 
 **Lancez le déploiement** : onglet **Actions** → *Deploy to PythonAnywhere* → **Run workflow**.
 Quand la coche est verte, ouvrez `https://<votre-site>.pythonanywhere.com` : la page d'accueil de

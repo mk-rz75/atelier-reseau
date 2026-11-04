@@ -141,19 +141,19 @@ Retenez ce résultat, il sera expliqué dans l'exercice 4 !
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> docker compose ps
 
 **Question 2.** Comment savez-vous, en regardant l'écran, que vous êtes dans le terminal du client et non dans celui de Codespace ?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Tapez hostname
 
 **Question 3.** Le client a l'adresse `172.20.1.50` et le site web `172.20.0.10`. Ces deux machines sont-elles sur le même réseau ? Quelle machine se trouve « entre » les deux ?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Non, ils sont sur deux réseaux différents (172.20.1.0/24 et 172.20.0.0/24). Entre les deux se trouve le routeur NAT (nat-router).
 
 ---
 
