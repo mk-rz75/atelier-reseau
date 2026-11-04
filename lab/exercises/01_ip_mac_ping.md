@@ -35,18 +35,18 @@ sur la ligne `inet` se trouvent l'**adresse IP** et le **masque** (après le `/`
 
 | Information        | Valeur pour le client |
 | ------------------ | --------------------- |
-| Nom de l'interface | …                     |
-| Adresse MAC        | …                     |
-| Adresse IP         | …                     |
-| Masque (notation `/`) | …                  |
-| Adresse du réseau  | …                     |
+| Nom de l'interface |        eth0           |
+| Adresse MAC        |   66:cb:04:bb:eb:e9   |
+| Adresse IP         |     172.20.1.50       |
+| Masque (notation `/`) |      /24           |
+| Adresse du réseau  |     172.20.1.0        |
 
 **Question A.2.** Le masque est `/24`. Combien de machines différentes peut-on placer dans ce réseau ?
 (Indice : le dernier nombre de l'adresse peut varier de 0 à 255, mais 2 valeurs sont réservées.)
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> 254 machines : 256 adresses possibles, moins l'adresse du réseau (.0) et l'adresse de broadcast (.255).
 
 ### Étape 2 — Ma passerelle
 
@@ -65,7 +65,7 @@ ip route
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> 172.20.1.254, c'est le routeur NAT (nat-router).
 
 ---
 
@@ -104,7 +104,7 @@ eu besoin de cette information **avant** de pouvoir envoyer le ping ?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Une entrée ARP est apparue : 172.20.1.2 avec la MAC 02:22:60:e8:f8:8e. Le client avait besoin de cette MAC pour construire la trame Ethernet avant d'envoyer le ping.
 
 ### Étape 5 — Joindre une machine d'un autre réseau
 
@@ -121,7 +121,7 @@ a-t-il appris la MAC ? Expliquez pourquoi, en vous aidant de la fiche théorique
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> De 172.20.1.254 (le routeur NAT). Le site est sur un autre réseau, donc le client passe par sa passerelle.
 
 ---
 
@@ -141,7 +141,7 @@ cette différence ? (Indice : chaque routeur traversé diminue le TTL de 1.)
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Non : TTL 64 vers la passerelle, 63 vers le site. Le paquet vers le site a traversé un routeur (le NAT), qui a retiré 1 au TTL.
 
 ### Étape 7 — traceroute
 
@@ -158,7 +158,7 @@ Dessinez (en texte) le chemin suivi : `client → … → internet`.
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Il y a 2 sauts. Le premier saut est 172.20.1.254, c'est le routeur NAT (la passerelle du client). Le deuxième saut est 172.20.0.10, c'est le site web lui-même. Chemin : client (172.20.1.50) → nat-router (172.20.1.254) → internet (172.20.0.10)
 
 ### Étape 8 — Le lab est isolé
 
@@ -172,7 +172,7 @@ ping -c 2 -W 2 8.8.8.8
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Le ping échoue : le routeur NAT (172.20.1.254) répond « Destination Net Unreachable ». Le lab est isolé : derrière le routeur, il n'y a que le réseau du site web (172.20.0.0/24), aucune route vers le vrai Internet. Le routeur ne sait donc pas où envoyer les paquets pour 8.8.8.8.
 
 ---
 
@@ -182,18 +182,18 @@ ping -c 2 -W 2 8.8.8.8
 
 | Notion        | Explication en une phrase |
 | ------------- | ------------------------- |
-| Adresse IP    | …                         |
-| Adresse MAC   | …                         |
-| Passerelle    | …                         |
-| ARP           | …                         |
-| TTL           | …                         |
+| Adresse IP    |C'est l'adresse d'une machine sur le réseau.|
+| Adresse MAC   |C'est l'identifiant de la carte réseau qui est unique.|
+| Passerelle    |C'est un outil matériel ou logiciel qui relie deux réseaux différents.|
+| ARP           |C'est le mécanisme qui permet de convertir une adresse IP en adresse MAC.|
+| TTL           |C'est une valeur numérique qui indique combien de routeurs un paquet peut transiter.|
 
 **Question D.2.** Vrai ou faux ? Justifiez : « Pour envoyer un paquet à `172.20.0.10`, le client met
 dans la trame la MAC de `172.20.0.10`. »
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> Faux. 172.20.0.10 est sur un autre réseau, donc le client met la MAC de sa passerelle (172.20.1.254). On l'a vu avec ip neigh : seule la MAC du routeur apparaissait.
 
 ---
 
