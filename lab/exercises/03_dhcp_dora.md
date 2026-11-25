@@ -89,7 +89,11 @@ Qui vous l'a donnée ?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> DHCPDISCOVER on eth0 to 255.255.255.255 port 67 interval 7
+DHCPOFFER of 172.20.1.151 from 172.20.1.2
+DHCPREQUEST for 172.20.1.151 on eth0 to 255.255.255.255 port 67
+DHCPACK of 172.20.1.151 from 172.20.1.2
+bound to 172.20.1.151 -- renewal in 18978 seconds.
 
 ### Étape 5 — Analyser les 4 messages
 
@@ -112,26 +116,26 @@ Qui vous l'a donnée ?
 
 | Étape       | IP source | IP destination    | MAC destination   | Type DHCP (opt 53) | Transaction ID |
 | ----------- | --------- | ----------------- | ----------------- | ------------------ | -------------- |
-| 1. Discover | `0.0.0.0` | `255.255.255.255` | …                 | …                  | …              |
-| 2. Offer    | …         | …                 | …                 | …                  | …              |
-| 3. Request  | …         | …                 | …                 | …                  | …              |
-| 4. ACK      | …         | …                 | …                 | …                  | …              |
+| 1. Discover | `0.0.0.0` | `255.255.255.255` | ff:ff:ff:ff:ff:ff |1 (DISCOVER)        | …              |
+| 2. Offer    | 172.20.1.2| 172.20.1.151      | 96:ac:8b:99:d7:1a | 2 (OFFER)          | …              |
+| 3. Request  | 0.0.0.0   |255.255.255.255    | ff:ff:ff:ff:ff:ff | 3 (REQUEST)        | …              |
+| 4. ACK      |172.20.1.2 | 172.20.1.151      | 96:ac:8n:99:d7:1a | 4 (ACK)            | …              |
 
 **Question B.3.** Dans le paquet **Offer** (n°2), relevez la configuration proposée par le serveur :
 
 | Information              | Option DHCP | Valeur |
 | ------------------------ | ----------- | ------ |
-| Adresse IP proposée      | (yiaddr)    | …      |
-| Masque de sous-réseau    | 1           | …      |
-| Passerelle (routeur)     | 3           | …      |
-| Serveurs DNS             | 6           | …      |
-| Durée du bail (secondes) | 51          | …      |
+| Adresse IP proposée      | (yiaddr)    |172.20.1.151|
+| Masque de sous-réseau    | 1           |255.255.255.0|
+| Passerelle (routeur)     | 3           |172.20.1.254|
+| Serveurs DNS             | 6           |1.1.1.1, 8.8.8.8|
+| Durée du bail (secondes) | 51          |43200|
 
 Convertissez la durée du bail en heures.
 
 > 💬 **Votre réponse (conversion) :**
 >
-> _Remplacez ce texte par votre réponse._
+> 43 200 s ÷ 3 600 = 12 heures.
 
 ---
 

@@ -80,14 +80,13 @@ indicateurs `[SYN]`, `[SYN, ACK]`, `[ACK]`. Comment s'appelle cet échange, et �
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
-
+> TCP en 3 étapes. Le client et le serveur se mettent d'accord pour ouvrir la connexion avant de commencer à échanger les données HTTP.
 **Question A.2.** Repérez le numéro du paquet contenant la **requête** `GET /` et celui contenant
 la **réponse** `200 OK`. Qui envoie chacun d'eux (IP source) ?
 
 > 💬 **Votre réponse :**
 >
-> _Remplacez ce texte par votre réponse._
+> La requête GET / est le paquet 4, envoyée par le client (172.20.1.50). La réponse 200 OK est le paquet 6, envoyée par le site web (172.20.0.10).
 
 ---
 
